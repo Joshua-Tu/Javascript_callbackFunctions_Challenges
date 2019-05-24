@@ -1,0 +1,58 @@
+<script>
+  /* Challenge 3
+    transform(Collection, Function, accumulator)
+    
+    This function transforms collection to a new accumulator collection by mutating the accumulator object with each iteration.
+    If accumulator is not provided, a new object with the same [[Prototype]] will be used.
+    Iteratee functions may exit iteration early by explicitly returning false.
+    The callback function is invoked iwth three agruments: (accumulator, value, (index|key)).
+
+    let address = { state: "nsw", postcode: 2230, city: "sydney", fullAddress: function() {} };
+    let newAddress = transform(address, function(accumulator, value, key) {
+        if (tyepof value !== "function") {
+            accumulator[key] = value;
+        }
+    }, {});
+
+    console.log(newAddress);
+    => { state: "nsw", postcode: 2230, city: "sydney" }
+
+    let numbers = [2,3,4];
+    let newNumbers = transform(numbers, function(accumulator, value, index) {
+        accumulator.push(value * value);
+        return value % 2 === 0;
+    }, []);
+
+    console.log(newNumbers);
+    => [4,9]
+*/
+
+let address = { state: "nsw", postcode: 2230, city: "sydney", fullAddress: function() {} };
+let newAddress = transform(address, function(accumulator, value, key) {
+        if (typeof value !== "function") {
+            accumulator[key] = value;
+        }
+    }, {});
+
+    console.log(newAddress);
+    //=> { state: "nsw", postcode: 2230, city: "sydney" }
+
+
+   ////////// part2
+    // let numbers = [2,3,4];
+    // let newNumbers = transform(numbers, function(accumulator, value, index) {
+    //     accumulator.push(value * value);
+    //     return value % 2 === 0;
+    // }, []);
+
+    // function transform(collection, callback, accumulator) {
+    //   for (let element of collection) {
+    //     if (!callback(accumulator, element)) {
+    //       break;
+    //     }
+    //   }
+    //   return accumulator
+    // }
+    // console.log(newNumbers);
+    //=> [4, 9]
+</script>

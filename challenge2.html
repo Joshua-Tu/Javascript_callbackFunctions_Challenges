@@ -1,0 +1,39 @@
+<script>
+  /* Challenge 2
+    filter(Array, Function)
+    
+    Iterates over elements from array, returning a new array of all elements that the callback function returns truthy for.
+    The callback function is invoked with two arguments: (value, index).
+
+    let numbers = [1,2,3,4,5,6];
+    let newNumbers = filter(numbers, function(value, index) {
+        return value % 2 === 0;
+    });
+
+    console.log(numbers);
+    => [1,2,3,4,5,6]
+
+    console.log(newNumbers)
+    => [2,4,6]
+*/
+//Solution:
+let numbers = [1,2,3,4,5,6];
+
+function filter(numArr, callback) {
+  let newNumArr = [];
+  for ( element of numArr) {
+    if (callback(element)) {
+      newNumArr.push(element);
+    }
+  }
+  return newNumArr
+}
+
+let newNumbers = filter(numbers, function(value, index) {
+      return value % 2 === 0;
+});
+
+
+console.log(newNumbers)
+//     //-> [2,4,6]
+</script>

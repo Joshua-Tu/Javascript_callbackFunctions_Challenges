@@ -1,0 +1,41 @@
+<script>
+  /* Challenge 1
+    remove(Array, Function)
+    
+    Removes all elements from array that callback function returns truthy for.
+    Returns an array of the removed elements (mutates the original array).
+    The callback function is invoked with two arguments: (value, index).
+
+    let people = ["james", "hamish", "john", "garret"];
+    remove(people, function(value, index) {
+      return value[0] === "j";
+    });
+
+    console.log(people);
+    => [“hamish”, “garret"]
+  */
+    // Solution:
+    let people = ["james", "hamish", "john", "garret", "joshua", "jack"];
+
+    function remove(arr, callback) {
+      console.log(arr);
+      for( let index in arr) {
+        index = Number(index)
+        if (callback(arr[index], index)) {
+          // delete 
+          arr.splice(index, 1);
+        }
+      }
+    }
+
+    remove(people, function(value, index) { //this index is useless, you can delete it
+        return value[0] === "j";
+    });
+
+
+
+    console.log(people);
+    // // => ["hamish", "garret"]
+
+
+</script>
